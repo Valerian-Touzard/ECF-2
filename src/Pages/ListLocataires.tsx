@@ -17,7 +17,7 @@ export type locataire = {
 export const ListLocataires = () => {
 
     const [locataires, setLocataires] = useState<locataire[]>([
-
+    
     ])
 
 
@@ -28,6 +28,10 @@ export const ListLocataires = () => {
     const findAllLocataires = () => {
         locataireService.findAllLocataires()
             .then(data => setLocataires(data));
+    }
+
+    const modifyLocataire = (id:string, newLocataire: locataire) => {
+        locataireService.modifyLocataire(id, newLocataire);
     }
 
     const addLocataire = (newLocataire: locataire) => {
@@ -45,7 +49,7 @@ export const ListLocataires = () => {
             <div>
                 <ul>
                     {locataires.map((locataire, id) => {
-                        return <Locataire unlocataire={locataire} key={id} deleteLocataire={deleteLocataire}/>
+                        return <Locataire unlocataire={locataire} key={id} deleteLocataire={deleteLocataire} modifyLocataire={modifyLocataire}/>
                     })}
                 </ul>
             </div>

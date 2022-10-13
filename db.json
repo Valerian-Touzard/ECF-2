@@ -1,3 +1,23 @@
 {
-  "locataires": []
+  "locataires": [
+    {
+      "id": "56a4afb-bbf2-65-a5f-87316afd0815",
+      "nom": "Touzard",
+      "prenom": "Valerian",
+      "dateNaiss": "2022-09-27",
+      "email": "vtouzard244@gmail.com",
+      "tel": "0682428252"
+    }
+  ],
+  "vehicules": [
+    {
+      "idVehicule": "4e32502-13a7-afe1-a50a-b2df47b0007",
+      "marque": "citroen",
+      "modele": "sport",
+      "imma": "AA-889-FR",
+      "etat": "Bon",
+      "type": "Voiture",
+      "prixLoca": "53"
+    }
+  ]
 }

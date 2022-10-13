@@ -1,27 +1,21 @@
-import React, { ButtonHTMLAttributes, FormEvent, useState } from 'react'
-import { unLocataire } from '../Components/Locataire';
+import React, { useState } from 'react'
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
+import { locataireService } from '../Services/LocataireServices';
+import { unLocataire } from '../Components/Locataire';
 
-export type propsType={
-    addLocataire: any
+export type propsType ={
+    unLocataire: unLocataire,
 }
 
-export const AddLocataire = (props: propsType) => {
 
-    const [newLocataire, setNewLocataire] = useState<locataire>({
-        id: "",
-        nom: "",
-        prenom: "",
-        dateNaiss: "",
-        email: "",
-        tel: ""
-    });
-    const [nom, setNom] = useState<string>();
-    const [prenom, setPrenom] = useState<string>();
-    const [dateNaiss, setdateNaiss] = useState<string>();
-    const [email, setEmail] = useState<string>();
-    const [tel, setTel] = useState<string>();
+export const ModifyLocataire = (props: propsType) => {
+    const [newLocataire, setNewLocataire] = useState<locataire>(props.unLocataire.unlocataire);
+    const [nom, setNom] = useState<string>(props.unLocataire.unlocataire.nom);
+    const [prenom, setPrenom] = useState<string>(props.unLocataire.unlocataire.prenom);
+    const [dateNaiss, setdateNaiss] = useState<string>(props.unLocataire.unlocataire.dateNaiss);
+    const [email, setEmail] = useState<string>(props.unLocataire.unlocataire.email);
+    const [tel, setTel] = useState<string>(props.unLocataire.unlocataire.tel);
 
 
 
@@ -48,10 +42,10 @@ export const AddLocataire = (props: propsType) => {
     /**
      * Méthode qui envoie le nouvelle utilisateur créer
      */
-    const addLocataire = (event: React.FormEvent) => {
+    const modifyLocataire = (event: React.FormEvent) => {
         event.preventDefault();
-        let newLocataire: locataire={
-            id:uuid(),
+        let newLocataire: locataire = {
+            id: uuid(),
             nom: nom as string,
             prenom: prenom as string,
             dateNaiss: dateNaiss as string,
@@ -59,20 +53,7 @@ export const AddLocataire = (props: propsType) => {
             tel: tel as string,
         }
         setNewLocataire(newLocataire);
-        refreshForm();
-        props.addLocataire(newLocataire);
         
-    }
-
-    /**
-     * Méthode qui remet le formulaire a vide
-     */
-    const refreshForm = () =>{
-        setNom("");
-        setPrenom("");
-        setdateNaiss("");
-        setEmail("");
-        setTel("");
     }
 
 
@@ -80,16 +61,16 @@ export const AddLocataire = (props: propsType) => {
         <>
             <form>
                 <label htmlFor="nom">Nom</label>
-                <input type="text" onChange={handleChangeNom} value={nom}/>
+                <input type="text" onChange={handleChangeNom} value={nom} />
                 <label htmlFor="prenom">Prénom</label>
-                <input type="text" onChange={handleChangePrenom} value={prenom}/>
+                <input type="text" onChange={handleChangePrenom} value={prenom} />
                 <label htmlFor="dateNaiss">Date de naissance</label>
-                <input type="date" onChange={handleChangeDateNaiss} value={dateNaiss}/>
+                <input type="date" onChange={handleChangeDateNaiss} value={dateNaiss} />
                 <label htmlFor="email">Email</label>
-                <input type="email" onChange={handleChangeEmail} value={email}/>
+                <input type="email" onChange={handleChangeEmail} value={email} />
                 <label htmlFor="tel">Téléphone</label>
-                <input type="phone" onChange={handleChangeTel} value={tel}/>
-                <button type="submit" onClick={addLocataire}>Enregistrer</button>
+                <input type="phone" onChange={handleChangeTel} value={tel} />
+                <button type="submit" onClick={modifyLocataire}>Enregistrer</button>
             </form>
         </>
     )

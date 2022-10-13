@@ -1,56 +1,56 @@
-const URI = "http://localhost:3001/locataires";
+const URI = "http://localhost:3001/vehicules";
 
 
-class LocataireService {
+class VehiculeService {
 
     /**
-     * retourne la liste des locataire
+     * retourne la liste des vehicules
      * @returns 
      */
-    findAllLocataires() {
+    findAllVehicule() {
         return fetch(URI)
             .then(response => response.json())
             .catch(err => console.error(err));
     }
 
     /**
-     * Ajoute 1 locataire
-     * @param unLocataire : locataire
+     * Ajoute 1 vehicule
+     * @param unVehicule : vehicule
      * @returns 
      */
-    addLocataire(unLocataire: any) {
+    addVehicule(unVehicule: any) {
         return fetch(URI, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(unLocataire),
+            body: JSON.stringify(unVehicule),
         })
 
     };
 
     /**
-     * Modifie un locataire
+     * Modifie un vehicule
      * @param id 
-     * @param unLocataire : locataire
+     * @param unVehicule : vehicule
      * @returns 
      */
-    modifyLocataire(id: string, unLocataire: any) {
+    modifyVehicule(id: string, unVehicule: any) {
         return fetch(URI+`/${id}`,{
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(unLocataire),
+            body: JSON.stringify(unVehicule),
         })
     }
 
     /**
-     * Supprimer un locataire
+     * Supprimer un vehicule
      * @param id : string
      * @returns 
      */
-    deleteLocataire(id: string){
+    deleteVehicule(id: string){
         return fetch (URI+`/${id}`, {
             method: "DELETE",
             headers: {
@@ -58,7 +58,6 @@ class LocataireService {
             }
         })
     }
-
 }
 
-export const locataireService = new LocataireService();
+export const vehiculeService = new VehiculeService();
