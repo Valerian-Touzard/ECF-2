@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Locataire } from '../Components/Locataire';
 import { Vehicule } from '../Components/Vehicule';
-import { AddLocataire } from '../Layouts/AddLocataire';
 import { AddVehicule } from '../Layouts/AddVehicule';
-import { locataireService } from '../Services/LocataireServices';
 import { vehiculeService } from '../Services/VehiculeService';
 
 export type vehiculeType = {

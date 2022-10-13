@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { locataireService } from '../Services/LocataireServices';
 import { Locataire } from '../Components/Locataire';
-import { Link } from 'react-router-dom';
 import { AddLocataire } from '../Layouts/AddLocataire'
-
 
 export type locataire = {
     id: string,
@@ -46,7 +44,7 @@ export const ListLocataires = () => {
     return (
         <>
             <AddLocataire addLocataire={addLocataire}/>
-            <div>
+            <div >
                 <ul>
                     {locataires.map((locataire, id) => {
                         return <Locataire unlocataire={locataire} key={id} deleteLocataire={deleteLocataire} modifyLocataire={modifyLocataire}/>

@@ -1,6 +1,4 @@
-import React, { ButtonHTMLAttributes, FormEvent, useState } from 'react'
-import { unLocataire } from '../Components/Locataire';
-import { locataire } from '../Pages/ListLocataires';
+import React, { useState } from 'react'
 import uuid from 'react-uuid';
 import { vehiculeType } from '../Pages/ListVehicule';
 
@@ -61,7 +59,7 @@ export const AddVehicule = (props: propsType) => {
      */
     const addVehicule = (event: React.FormEvent) => {
         event.preventDefault();
-        let newLocataire: vehiculeType={
+        let newVehiculeTmp: vehiculeType={
             idVehicule:uuid(),
             marque: marque as string,
             modele: modele as string,
@@ -71,9 +69,9 @@ export const AddVehicule = (props: propsType) => {
             type: type as string,
             prixLoca: prixLoca as string,
         }
-        setNewVehicule(newLocataire);
+        setNewVehicule(newVehiculeTmp);
         refreshForm();
-        props.addVehicule(newLocataire);
+        props.addVehicule(newVehicule);
         
     }
 

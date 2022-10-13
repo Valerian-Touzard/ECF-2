@@ -1,5 +1,4 @@
-import React, { ButtonHTMLAttributes, FormEvent, useState } from 'react'
-import { unLocataire } from '../Components/Locataire';
+import React, { useState } from 'react'
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
 
@@ -50,7 +49,7 @@ export const AddLocataire = (props: propsType) => {
      */
     const addLocataire = (event: React.FormEvent) => {
         event.preventDefault();
-        let newLocataire: locataire={
+        let newLocataireTmp: locataire={
             id:uuid(),
             nom: nom as string,
             prenom: prenom as string,
@@ -58,7 +57,7 @@ export const AddLocataire = (props: propsType) => {
             email: email as string,
             tel: tel as string,
         }
-        setNewLocataire(newLocataire);
+        setNewLocataire(newLocataireTmp);
         refreshForm();
         props.addLocataire(newLocataire);
         

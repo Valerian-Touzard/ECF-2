@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
-import { locataireService } from '../Services/LocataireServices';
 import { unLocataire } from '../Components/Locataire';
 
 export type propsType ={
@@ -44,7 +43,7 @@ export const ModifyLocataire = (props: propsType) => {
      */
     const modifyLocataire = (event: React.FormEvent) => {
         event.preventDefault();
-        let newLocataire: locataire = {
+        let newLocataireTmp: locataire = {
             id: uuid(),
             nom: nom as string,
             prenom: prenom as string,
@@ -52,7 +51,8 @@ export const ModifyLocataire = (props: propsType) => {
             email: email as string,
             tel: tel as string,
         }
-        setNewLocataire(newLocataire);
+        setNewLocataire(newLocataireTmp);
+        return newLocataire;
         
     }
 

@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ModifyLocataire } from '../Layouts/ModifyLocataire'
 import { vehiculeType } from '../Pages/ListVehicule'
 
 export type unVehicule = {
@@ -11,7 +9,7 @@ export type unVehicule = {
 
 export const Vehicule = (props: unVehicule) => {
 
-  const [vehicule, setVehicule] = useState(props)
+  const [vehicule] = useState(props)
 
 
   
