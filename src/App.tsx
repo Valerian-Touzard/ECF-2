@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Routeur, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { HomePage } from './Pages/HomePage';
+import { ListLocataires } from './Pages/ListLocataires';
 import { Page404 } from './Pages/Page404';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       <Routeur>
         <Routes>
           <Route path='*' element={<Page404 />}/>
-          <Route path="/" element={<HomePage />}/>
+          <Route path="/" element={<ListLocataires />}/>
         </Routes>
       </Routeur>
     </>

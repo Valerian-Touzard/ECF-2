@@ -1,19 +1,12 @@
 {
-  "posts": [
+  "locataires": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "sfg5fsd1g561fs",
+      "nom": "Touzard",
+      "prenom": "Valérian",
+      "dateNaiss": "27/11/1999",
+      "email": "vtouzard244@gmail.com",
+      "tel": "0682428252"
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
