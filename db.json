@@ -1,19 +1,50 @@
 {
-  "posts": [
+  "locataires": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "id": "5dda3f-760d-77ac-d537-44ace4f81c8a",
+      "nom": "PasLaRef",
+      "prenom": "Michelle",
+      "dateNaiss": "2022-10-05",
+      "email": "mPaslaref@gmail.com",
+      "tel": "0606060606"
+    },
+    {
+      "id": "61cd86-ddc1-b313-07a5-63fd38a724f8",
+      "nom": "TantPis",
+      "prenom": "Bernard",
+      "dateNaiss": "2022-10-04",
+      "email": "bTantpis@gmail.com",
+      "tel": "0606060606"
+    },
+    {
+      "id": "1e61f2e-1f64-487-fab7-d7e81e3b84c2",
+      "nom": "Alidée",
+      "prenom": "Jhony",
+      "dateNaiss": "2022-10-23",
+      "email": "jAlidée@gmail.com",
+      "tel": "0606060606"
     }
   ],
-  "comments": [
+  "vehicules": [
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "idVehicule": "4e32502-13a7-afe1-a50a-b2df47b0007",
+      "marque": "citroen",
+      "modele": "sport",
+      "imma": "AA-889-FR",
+      "dispo": true,
+      "etat": "Bon",
+      "type": "Voiture",
+      "prixLoca": "53"
+    },
+    {
+      "idVehicule": "fds54f4sd-13a7-afe1-a50a-b2df47b0007",
+      "marque": "renault",
+      "modele": "sport",
+      "imma": "AA-853-DE",
+      "dispo": false,
+      "etat": "neuf",
+      "type": "Voiture",
+      "prixLoca": "552"
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
