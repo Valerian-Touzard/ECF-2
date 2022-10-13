@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
 import { locataireService } from '../Services/LocataireServices';
+import { Locataire } from '../Components/Locataire';
 
-export type locataire={
-    id: string;
+export type locataire = {
+    id: string,
     nom: string,
     prenom: string,
     dateNaiss: string,
@@ -14,33 +16,32 @@ export type locataire={
 
 export const ListLocataires = () => {
 
-    const [locataires, setLocataires] = useState([])
+    const [locataires, setLocataires] = useState<locataire[]>([
+
+    ])
 
 
     useEffect(() => {
-      findAllLocataires();
+        findAllLocataires();
     }, []);
 
     const findAllLocataires = () => {
         locataireService.findAllLocataires()
-                        .then(data => setLocataires(data));
+            .then(data => setLocataires(data));
     }
-    
 
-  return (
-    <>
-<div>
-            <div className="card">
-                <DataTable value={locataires} responsiveLayout="scroll">
-                    <Column field="id" header="ID"></Column>
-                    <Column field="nom" header="Nom"></Column>
-                    <Column field="prenom" header="Prénom"></Column>
-                    <Column field="dateNaiss" header="Date de naissance"></Column>
-                    <Column field="email" header="Email"></Column>
-                    <Column field="tel" header="Tel"></Column>
-                </DataTable>
+
+    return (
+        <>
+            <div>
+                <div className="card">
+                    <ul>
+                        {locataires.map((locataire, id) => {
+                            return <Locataire unlocataire={locataire} key={id} />
+                        })}
+                    </ul>
+                </div>
             </div>
-        </div>
-    </>
-  )
+        </>
+    )
 }
