@@ -31,7 +31,6 @@ export const Locataire = (props: unLocataire) => {
         <p>date de naissance: {locataire.unlocataire.dateNaiss}</p>
         <p>email: {locataire.unlocataire.email}</p>
         <p>tel: {locataire.unlocataire.tel}</p>
-        <button >Afficher</button>
         <button onClick={modifyLocataire}>Modiffier</button>
         <button onClick={deleteLocataires}>Supprimer</button>
       </li>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { locataireService } from '../Services/LocataireServices';
 import { Locataire } from '../Components/Locataire';
 import { AddLocataire } from '../Layouts/AddLocataire'
-
+import "../css/Locataire/style.css"
 export type locataire = {
     id: string,
     nom: string,
@@ -14,36 +14,64 @@ export type locataire = {
 
 export const ListLocataires = () => {
 
-    const [locataires, setLocataires] = useState<locataire[]>([
-    
-    ])
-
+    const [locataires, setLocataires] = useState<locataire[]>([])
+    const [isClicked, setisClicked] = useState<boolean>(false)
+    const [textBouton, setTextBouton] = useState<string>('Ajouter client')
 
     useEffect(() => {
         findAllLocataires();
     }, []);
 
-    const findAllLocataires = () => {
-        locataireService.findAllLocataires()
-            .then(data => setLocataires(data));
+    /**
+     * Permet de récupérer la liste des locataires
+     */
+    const findAllLocataires = async () => {
+        await locataireService.findAllLocataires()
+            .then(async data => await setLocataires(data));
     }
 
-    const modifyLocataire = (id:string, newLocataire: locataire) => {
-        locataireService.modifyLocataire(id, newLocataire);
+    /**
+     * Modifie un locataire via son id
+     * @param id string
+     * @param newLocataire locataire
+     */
+    const modifyLocataire = async (id:string, newLocataire: locataire) => {
+        await locataireService.modifyLocataire(id, newLocataire);
     }
 
-    const addLocataire = (newLocataire: locataire) => {
-        locataireService.addLocataire(newLocataire).then(findAllLocataires);
+    /**
+     * Ajoute un locataire
+     * @param newLocataire locataire
+     */
+    const addLocataire = async (newLocataire: locataire) => {
+        await locataireService.addLocataire(newLocataire).then( await findAllLocataires);
     }
 
-    const deleteLocataire = (id:string) => {
-        locataireService.deleteLocataire(id).then(findAllLocataires);
+    /**
+     * supprime un locataire via son id
+     * @param id string
+     */
+    const deleteLocataire = async (id:string) => {
+        await locataireService.deleteLocataire(id).then(await findAllLocataires);
     }
 
+/**
+ * Permet d'afficher/cacher le formulaire d'ajout de locataire
+ */
+    const changeVisibility = () =>{
+        if (!isClicked) {
+           setisClicked(true);
+           setTextBouton("fermer formulaire");
+        }else{
+            setisClicked(false);
+            setTextBouton("Ajouter client");
+        }
+    }
 
     return (
         <>
-            <AddLocataire addLocataire={addLocataire}/>
+        <button onClick={changeVisibility} className="bouton">{textBouton}</button>
+            { isClicked? <AddLocataire addLocataire={addLocataire} />: ""}
             <div >
                 <ul>
                     {locataires.map((locataire, id) => {

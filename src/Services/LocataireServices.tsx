@@ -5,10 +5,10 @@ class LocataireService {
 
     /**
      * retourne la liste des locataire
-     * @returns 
+     * @returns JSON
      */
-    findAllLocataires() {
-        return fetch(URI)
+    async findAllLocataires() {
+        return await fetch(URI)
             .then(response => response.json())
             .catch(err => console.error(err));
     }
@@ -16,16 +16,16 @@ class LocataireService {
     /**
      * Ajoute 1 locataire
      * @param unLocataire : locataire
-     * @returns 
+     * @returns JSON
      */
-    addLocataire(unLocataire: any) {
-        return fetch(URI, {
+    async addLocataire(unLocataire: any) {
+        return await fetch(URI, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(unLocataire),
-        })
+        }).then(response => response.json()).catch(err => console.error(err));
 
     };
 
@@ -33,7 +33,7 @@ class LocataireService {
      * Modifie un locataire
      * @param id 
      * @param unLocataire : locataire
-     * @returns 
+     * @returns JSOn
      */
     modifyLocataire(id: string, unLocataire: any) {
         return fetch(URI+`/${id}`,{
@@ -42,16 +42,16 @@ class LocataireService {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(unLocataire),
-        })
+        }).then(response => response.json()).catch(err => console.error(err));
     }
 
     /**
      * Supprimer un locataire
      * @param id : string
-     * @returns 
+     * @returns JSON
      */
-    deleteLocataire(id: string){
-        return fetch (URI+`/${id}`, {
+    async deleteLocataire(id: string){
+        return await fetch (URI+`/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

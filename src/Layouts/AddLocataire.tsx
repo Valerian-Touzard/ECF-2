@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
+import "../css/Locataire/formulaire.css"
 
 export type propsType={
     addLocataire: any
@@ -8,14 +9,7 @@ export type propsType={
 
 export const AddLocataire = (props: propsType) => {
 
-    const [newLocataire, setNewLocataire] = useState<locataire>({
-        id: "",
-        nom: "",
-        prenom: "",
-        dateNaiss: "",
-        email: "",
-        tel: ""
-    });
+    const [newLocataire, setNewLocataire] = useState<locataire>();
     const [nom, setNom] = useState<string>();
     const [prenom, setPrenom] = useState<string>();
     const [dateNaiss, setdateNaiss] = useState<string>();
@@ -57,9 +51,8 @@ export const AddLocataire = (props: propsType) => {
             email: email as string,
             tel: tel as string,
         }
-        setNewLocataire(newLocataireTmp);
         refreshForm();
-        props.addLocataire(newLocataire);
+        props.addLocataire(newLocataireTmp);
         
     }
 
@@ -77,7 +70,7 @@ export const AddLocataire = (props: propsType) => {
 
     return (
         <>
-            <form>
+            <form className='formulaire'>
                 <label htmlFor="nom">Nom</label>
                 <input type="text" onChange={handleChangeNom} value={nom}/>
                 <label htmlFor="prenom">Prénom</label>
@@ -88,7 +81,7 @@ export const AddLocataire = (props: propsType) => {
                 <input type="email" onChange={handleChangeEmail} value={email}/>
                 <label htmlFor="tel">Téléphone</label>
                 <input type="phone" onChange={handleChangeTel} value={tel}/>
-                <button type="submit" onClick={addLocataire}>Enregistrer</button>
+                <button type="submit" onClick={addLocataire} className="bouton">Enregistrer</button>
             </form>
         </>
     )

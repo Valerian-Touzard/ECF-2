@@ -1,11 +1,12 @@
-const URI = "http://localhost:3001/vehicules";
+import { vehiculeType } from "../Pages/ListVehicule";
 
+const URI = "http://localhost:3001/vehicules";
 
 class VehiculeService {
 
     /**
      * retourne la liste des vehicules
-     * @returns 
+     * @returns JSON
      */
     findAllVehicule() {
         return fetch(URI)
@@ -16,47 +17,32 @@ class VehiculeService {
     /**
      * Ajoute 1 vehicule
      * @param unVehicule : vehicule
-     * @returns 
+     * @returns JSON
      */
-    addVehicule(unVehicule: any) {
+    addVehicule(unVehicule: vehiculeType) {
         return fetch(URI, {
             method: "POST",
+            body: JSON.stringify(unVehicule),
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify(unVehicule),
-        })
+            }
+            
+        }).then(response => response.json()).catch(err => console.error(err));
 
     };
 
     /**
-     * Modifie un vehicule
-     * @param id 
-     * @param unVehicule : vehicule
-     * @returns 
-     */
-    modifyVehicule(id: string, unVehicule: any) {
-        return fetch(URI+`/${id}`,{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(unVehicule),
-        })
-    }
-
-    /**
      * Supprimer un vehicule
-     * @param id : string
-     * @returns 
+     * @param idVehicule : string
+     * @returns JSON
      */
-    deleteVehicule(id: string){
-        return fetch (URI+`/${id}`, {
+    deleteVehicule(ididVehicule: string) {
+        return fetch(URI + `/${ididVehicule}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             }
-        })
+        }).then(response => response.json()).catch(err => console.error(err));
     }
 }
 
