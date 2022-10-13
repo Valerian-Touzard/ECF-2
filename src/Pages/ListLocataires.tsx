@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { Button } from 'primereact/button';
 import { locataireService } from '../Services/LocataireServices';
 import { Locataire } from '../Components/Locataire';
+import { Link } from 'react-router-dom';
+import { AddLocataire } from '../Layouts/AddLocataire'
 
 export type locataire = {
     id: string,
@@ -30,17 +29,21 @@ export const ListLocataires = () => {
             .then(data => setLocataires(data));
     }
 
+    const addLocataire = (newLocataire: locataire) => {
+        locataireService.addLocataire(newLocataire).then(findAllLocataires);
+    }
+
 
     return (
         <>
+            <Link to='addLocataire' >Ajouter un client</Link>
+            <AddLocataire addLocataire={addLocataire}/>
             <div>
-                <div className="card">
-                    <ul>
-                        {locataires.map((locataire, id) => {
-                            return <Locataire unlocataire={locataire} key={id} />
-                        })}
-                    </ul>
-                </div>
+                <ul>
+                    {locataires.map((locataire, id) => {
+                        return <Locataire unlocataire={locataire} key={id} />
+                    })}
+                </ul>
             </div>
         </>
     )

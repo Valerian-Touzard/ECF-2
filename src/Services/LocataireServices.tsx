@@ -10,6 +10,17 @@ class LocataireService {
     }
 
 
+    addLocataire(unLocataire: any){
+        return fetch(URI,{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(unLocataire),
+        })
+                
+    }
+
 }
 
 export const locataireService = new LocataireService();
