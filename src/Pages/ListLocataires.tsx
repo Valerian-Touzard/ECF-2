@@ -4,6 +4,7 @@ import { Locataire } from '../Components/Locataire';
 import { Link } from 'react-router-dom';
 import { AddLocataire } from '../Layouts/AddLocataire'
 
+
 export type locataire = {
     id: string,
     nom: string,
@@ -33,15 +34,18 @@ export const ListLocataires = () => {
         locataireService.addLocataire(newLocataire).then(findAllLocataires);
     }
 
+    const deleteLocataire = (id:string) => {
+        locataireService.deleteLocataire(id).then(findAllLocataires);
+    }
+
 
     return (
         <>
-            <Link to='addLocataire' >Ajouter un client</Link>
             <AddLocataire addLocataire={addLocataire}/>
             <div>
                 <ul>
                     {locataires.map((locataire, id) => {
-                        return <Locataire unlocataire={locataire} key={id} />
+                        return <Locataire unlocataire={locataire} key={id} deleteLocataire={deleteLocataire}/>
                     })}
                 </ul>
             </div>

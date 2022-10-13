@@ -3,7 +3,7 @@ import { unLocataire } from '../Components/Locataire';
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
 
-export type propsType={
+export type propsType = {
     addLocataire: any
 }
 
@@ -50,8 +50,8 @@ export const AddLocataire = (props: propsType) => {
      */
     const addLocataire = (event: React.FormEvent) => {
         event.preventDefault();
-        let newLocataire: locataire={
-            id:uuid(),
+        let newLocataire: locataire = {
+            id: uuid(),
             nom: nom as string,
             prenom: prenom as string,
             dateNaiss: dateNaiss as string,
@@ -61,13 +61,13 @@ export const AddLocataire = (props: propsType) => {
         setNewLocataire(newLocataire);
         refreshForm();
         props.addLocataire(newLocataire);
-        
+
     }
 
     /**
      * Méthode qui remet le formulaire a vide
      */
-    const refreshForm = () =>{
+    const refreshForm = () => {
         setNom("");
         setPrenom("");
         setdateNaiss("");
@@ -80,15 +80,15 @@ export const AddLocataire = (props: propsType) => {
         <>
             <form>
                 <label htmlFor="nom">Nom</label>
-                <input type="text" onChange={handleChangeNom} value={nom}/>
+                <input type="text" onChange={handleChangeNom} value={nom} />
                 <label htmlFor="prenom">Prénom</label>
-                <input type="text" onChange={handleChangePrenom} value={prenom}/>
+                <input type="text" onChange={handleChangePrenom} value={prenom} />
                 <label htmlFor="dateNaiss">Date de naissance</label>
-                <input type="date" onChange={handleChangeDateNaiss} value={dateNaiss}/>
+                <input type="date" onChange={handleChangeDateNaiss} value={dateNaiss} />
                 <label htmlFor="email">Email</label>
-                <input type="email" onChange={handleChangeEmail} value={email}/>
+                <input type="email" onChange={handleChangeEmail} value={email} />
                 <label htmlFor="tel">Téléphone</label>
-                <input type="phone" onChange={handleChangeTel} value={tel}/>
+                <input type="phone" onChange={handleChangeTel} value={tel} />
                 <button type="submit" onClick={addLocataire}>Enregistrer</button>
             </form>
         </>
