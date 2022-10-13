@@ -17,15 +17,13 @@ export const Vehicule = (props: unVehicule) => {
    * @param event React.FormEvent
    */
   const deleteVehicule = (event: React.FormEvent) => {
-    event.preventDefault();
-    console.log(vehicule.unVehicule.idVehicule);
-    
+    event.preventDefault();  
     props.deleteVehicule(vehicule.unVehicule.idVehicule)
   }
 
   /**
    * Permet de modifier les information d'un véhicule
-   * @param event React.FormEvent
+   * @param event 
    */
   const modifyVehicule = (event: React.FormEvent) => {
     event.preventDefault();
@@ -40,7 +38,7 @@ export const Vehicule = (props: unVehicule) => {
         <p>etat: {vehicule.unVehicule.etat}</p>
         <p>dispo: {vehicule.unVehicule.dispo? "oui" : "non"}</p>
         <p>type: {vehicule.unVehicule.type}</p>
-        <p>prix: {vehicule.unVehicule.prixLoca}</p>
+        <p>prix: {vehicule.unVehicule.prixLoca} €</p>
         <button onClick={modifyVehicule}>Modiffier</button>
         <button onClick={deleteVehicule}>Supprimer</button>
       </li>
