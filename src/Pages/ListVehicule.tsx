@@ -76,7 +76,6 @@ export const ListVehicule = () => {
             <button onClick={changeVisibility} className="bouton">{textBouton}</button>
             {isClicked ? <AddVehicule addVehicule={addVehicule} /> : ""}
             <div >
-
                 <div>
                     <ul>
                         {vehicules.map((vehicule, idVehicule) => {

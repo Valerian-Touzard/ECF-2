@@ -27,7 +27,7 @@ class VehiculeService {
                 "Content-Type": "application/json"
             }
             
-        }).then(response => response.json()).catch(err => console.error(err));
+        }).catch(err => console.error(err));
 
     };
 

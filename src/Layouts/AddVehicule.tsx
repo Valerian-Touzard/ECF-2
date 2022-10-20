@@ -70,7 +70,7 @@ export const AddVehicule = (props: propsType) => {
         event.preventDefault();
         let idVehicule: string = uuid();
         let newVehiculeTmp: vehiculeType = {
-            idVehicule: idVehicule,
+            idVehicule: idVehicule as string,
             marque: marque as string,
             modele: modele as string,
             imma: imma as string,
@@ -81,7 +81,6 @@ export const AddVehicule = (props: propsType) => {
         }
         refreshForm();
         props.addVehicule(newVehiculeTmp);
-
     }
 
     /**
