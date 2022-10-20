@@ -5,6 +5,7 @@ import { FormulaireAjoutLocataire } from './Components/Ajout/FormulaireAjoutLoca
 import { FormulaireAjoutVehicule } from './Components/Ajout/FormulaireAjoutVehicule';
 import { FormulaireModificationLocataire } from './Components/Modif/FormulaireModificationLocataire';
 import { FormulaireModificationVehicule } from './Components/Modif/FormulaireModificationVehicule';
+import { SupprLocataire } from './Components/Suppr/SupprLocataire';
 import './Css/Navbar/navbar.css';
 import image from "./img/localib.png";
 import { ListLocataires } from './Pages/ListLocataires';
@@ -39,6 +40,8 @@ function App() {
 
           <Route path="/modifLocataire/:id" element={<FormulaireModificationLocataire />} />
           <Route path="/modifVehicule/:id" element={<FormulaireModificationVehicule />} />
+
+          <Route path="/confirmSuprrLocataire/:id" element={<SupprLocataire />} />
         </Routes>
       </Routeur>
     </>
