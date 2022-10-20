@@ -21,6 +21,7 @@ export const Vehicule = (props: unVehicule) => {
             <td>
                 <Link to={`/modifVehicule/${props.vehicule.id}`} className="modifier">Modifier</Link>
                 <Link to={`/confirmSuprrVehicule/${props.vehicule.id}`} className="supprimer">Supprimer</Link>
+                {props.vehicule.dispo === true ? <Link to={`/ajoutLocation/${props.vehicule.id}`} className="ajoutLocation">Louer le véhicule</Link> : " "}
             </td>
 
         </>

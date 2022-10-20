@@ -6,6 +6,7 @@ import { ListVehicules } from './Pages/ListVehicules';
 import { ListLocation } from './Pages/ListLocation';
 import { FormulaireAjoutLocataire } from './Components/Ajout/FormulaireAjoutLocataire';
 import { FormulaireAjoutVehicule } from './Components/Ajout/FormulaireAjoutVehicule';
+import { FormulaireAjoutLocation } from './Components/Ajout/FormulaireAjoutLocation';
 import { FormulaireModificationLocataire } from './Components/Modif/FormulaireModificationLocataire';
 import { FormulaireModificationVehicule } from './Components/Modif/FormulaireModificationVehicule';
 import { SupprLocataire } from './Components/Suppr/SupprLocataire';
@@ -40,6 +41,7 @@ function App() {
 
           <Route path="/ajoutLocataire" element={<FormulaireAjoutLocataire />} />
           <Route path="/ajoutVehicule" element={<FormulaireAjoutVehicule />} />
+          <Route path="/ajoutLocation/:id" element={<FormulaireAjoutLocation />} />
 
           <Route path="/modifLocataire/:id" element={<FormulaireModificationLocataire />} />
           <Route path="/modifVehicule/:id" element={<FormulaireModificationVehicule />} />

@@ -18,7 +18,7 @@ class LocationService{
      * @param id string
      * @returns json
      */
-    getOneVehiculeById(id: string) {
+    getOneLocationById(id: string) {
         return fetch(URI + "/" + id).then(response => response.json()).catch(err => console.log(err));
     }
 
@@ -28,7 +28,7 @@ class LocationService{
      * @param location LocationType
      * @returns json
      */
-    addNewVehicule(location: LocationType) {
+    addNewLocation(location: LocationType) {
         return fetch(URI, {
             method: "POST",
             body: JSON.stringify(location),
@@ -45,7 +45,7 @@ class LocationService{
      * @param id string
      * @returns json
      */
-    modifVehicule(location: LocationType, id: string) {
+    modifLocation(location: LocationType, id: string) {
         return fetch(URI + "/" + id, {
             method: "PUT",
             body: JSON.stringify(location),
@@ -60,7 +60,7 @@ class LocationService{
      * @param id string
      * @returns 
      */
-    deleteVehicule(id: string) {
+    deleteLocation(id: string) {
         return fetch(URI + "/" + id, {
             method: "DELETE",
         }).then(response => response.json()).catch(err => console.log(err));

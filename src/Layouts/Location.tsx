@@ -13,7 +13,7 @@ export const Location = (props: propsType) => {
             <td>{props.location.imma}</td>
             <td>{props.location.dateDebut}</td>
             <td>{props.location.dateFin}</td>
-            <td>{props.location.prix}</td>
+            <td>{props.location.prixLoca}</td>
             <td>
                 <Link to={`/modifLocataire/${props.location.id}`} className="modifier">Modifier</Link>
                 <Link to={`/confirmSuprrLocataire/${props.location.id}`} className="supprimer">Supprimer</Link>

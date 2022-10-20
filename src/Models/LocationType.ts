@@ -4,5 +4,5 @@ export interface LocationType{
     imma: string,
     dateDebut: string,
     dateFin: string,
-    prix: string,
+    prixLoca: string,
 }
