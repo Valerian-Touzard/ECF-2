@@ -7,7 +7,7 @@ class LocataireService {
      * retourne la liste des locataire
      * @returns JSON
      */
-    async findAllLocataires() {
+    async getAllLocataires() {
         return await fetch(URI)
             .then(response => response.json())
             .catch(err => console.error(err));

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { locataire } from '../Pages/ListLocataires';
 import uuid from 'react-uuid';
-import { unLocataire } from '../Components/Locataire';
+import { unLocataire } from '../Layouts/Locataire';
 
 export type propsType ={
     unLocataire: unLocataire,

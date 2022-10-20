@@ -5,7 +5,7 @@ import { ListLocataires } from './Pages/ListLocataires';
 import { ListVehicule } from './Pages/ListVehicule';
 import { Page404 } from './Pages/Page404';
 import image  from './img/localib.png'
-import { AddLocataire } from './Layouts/AddLocataire';
+import { AddLocataire } from './Components/AddLocataire';
 
 function App() {
   return (
