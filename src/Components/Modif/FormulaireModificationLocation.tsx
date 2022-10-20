@@ -46,7 +46,43 @@ export const FormulaireModificationLocation = () => {
      */
     const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         event.preventDefault();
-        setLocationAModiff({ ...locationAModiff, [event.target.name]: event.target.value });
+        calculePrix(event.target.value)
+    }
+
+    /**
+     * Permet de calculer le prix total de la location et de l'enregistrer dans le state après modification de la date
+     */
+    const calculePrix = (dateFin: string) => {
+        
+        // On définit un objet LocationType qui prends la valeurs des attibuts du state
+        let locaAModiff: LocationType = {
+            id: locationAModiff.id,
+            idClient: locationAModiff.idClient,
+            idVehicule: locationAModiff.idVehicule,
+            imma: locationAModiff.imma,
+            dateDebut: locationAModiff.dateDebut,
+            dateFin: dateFin,
+            prixLoca: ""
+        }
+
+        // Création de deux variables locales qui enregistre les dates de l'utilisateur
+        let dateDebutLoca = new Date(locationAModiff.dateDebut);
+        let dateFinLoca = new Date(dateFin);
+
+        // récupère le temps en milliseconde qui sépare les deux dates
+        let tmp = dateFinLoca.getTime() - dateDebutLoca.getTime();
+
+        // Permet de récupèrer le nombre de jours entre les deux dates
+        tmp = Math.floor((((tmp / 1000) / 60) / 60) / 24);
+
+        // On calcule le prix totale de la location en prenant en compte le prix de location de 1 jours de la voiture
+        let prixTotale: number = tmp * parseInt(vehicule?.prix as string);
+
+        // On convertie la variable en string 
+        locaAModiff.prixLoca = prixTotale.toString();
+
+        // On enregistre la valeurs
+        setLocationAModiff(locaAModiff)
     }
 
     /**
@@ -68,9 +104,11 @@ export const FormulaireModificationLocation = () => {
             <form className='formulaire'>
                 <div className="champ">
                     <label htmlFor="dateFin">Date de fin</label>
-                    <input type="date" name='dateFin' value={locationAModiff?.dateFin} onChange={handleChange}/>
+                    <input type="date" name='dateFin' value={locationAModiff?.dateFin} onChange={handleChange} />
                 </div>
-
+                <div className="champ">
+                    <p>nouveau Prix: {locationAModiff.prixLoca}</p>
+                </div>
                 <button type="submit" onClick={modifLocation} className="bouton">Modifier location</button>
             </form>
         </>

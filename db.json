@@ -69,13 +69,13 @@
   ],
   "locations": [
     {
-      "id": "03036-2b78-ae31-060-773a7ca04fcf",
+      "id": "ddf7a82-62b0-fe36-3b82-da2cbd24d6e6",
       "idClient": "61cd86-ddc1-b313-07a5-63fd38a724f8",
       "idVehicule": "5a4d8aa-8ada-6fcd-57b8-1a068d04ad11",
       "imma": "AA-111-AA",
       "dateDebut": "2022-10-20",
-      "dateFin": "2022-10-24",
-      "prixLoca": "300"
+      "dateFin": "2022-10-27",
+      "prixLoca": "700"
     }
   ]
 }
