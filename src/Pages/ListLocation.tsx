@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { LocataireType } from '../Models/LocataireType'
+import { Location } from '../Layouts/Location'
+import { LocationType } from '../Models/LocationType'
 import { locationService } from '../Services/LocationService'
 
 export const ListLocation = () => {
 
-    const [ListLocations, setListLocations] = useState<LocataireType[]>([])
+    const [listLocations, setListLocations] = useState<LocationType[]>([])
 
 
     useEffect(() => {
@@ -20,8 +21,28 @@ export const ListLocation = () => {
         locationService.getAllLocations().then(data => setListLocations(data))
     }
 
-    
+
     return (
-        <div>ListLocation</div>
+        <>
+            <table className='tableau-style'>
+                <thead>
+                    <tr>
+                        <th>Nom du locataire</th>
+                        <th>immatriculation</th>
+                        <th>Date de début</th>
+                        <th>Date de Fin</th>
+                        <th>prix</th>
+                        <th>option</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {listLocations && listLocations.map((location) => {
+                        return <tr key={location.id}><Location location={location} /></tr>
+                    })}
+                </tbody>
+            </table>
+
+        </>
     )
 }

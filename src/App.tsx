@@ -3,6 +3,7 @@ import { BrowserRouter as Routeur, Link, Routes, Route } from 'react-router-dom'
 import './App.css';
 import { ListLocataires } from './Pages/ListLocataires';
 import { ListVehicules } from './Pages/ListVehicules';
+import { ListLocation } from './Pages/ListLocation';
 import { FormulaireAjoutLocataire } from './Components/Ajout/FormulaireAjoutLocataire';
 import { FormulaireAjoutVehicule } from './Components/Ajout/FormulaireAjoutVehicule';
 import { FormulaireModificationLocataire } from './Components/Modif/FormulaireModificationLocataire';
@@ -35,6 +36,7 @@ function App() {
           <Route path='*' element={<Page404 />} />
           <Route path="/" element={<ListLocataires />} />
           <Route path="/vehicule" element={<ListVehicules />} />
+          <Route path="/location" element={<ListLocation />} />
 
           <Route path="/ajoutLocataire" element={<FormulaireAjoutLocataire />} />
           <Route path="/ajoutVehicule" element={<FormulaireAjoutVehicule />} />
