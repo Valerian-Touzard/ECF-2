@@ -27,24 +27,55 @@
   ],
   "vehicules": [
     {
-      "idVehicule": "4e32502-13a7-afe1-a50a-b2df47b0007",
-      "marque": "citroen",
-      "modele": "sport",
-      "imma": "AA-889-FR",
-      "dispo": true,
-      "etat": "Bon",
+      "id": "ad831f-236b-bb8f-c3d1-6e58c27687",
+      "marque": "Reunault",
+      "modele": "Famillale",
       "type": "Voiture",
-      "prixLoca": "53"
+      "imma": "BB-22-BB",
+      "etat": "B",
+      "prix": "50",
+      "dispo": true
     },
     {
-      "idVehicule": "fds54f4sd-13a7-afe1-a50a-b2df47b0007",
-      "marque": "renault",
-      "modele": "sport",
-      "imma": "AA-853-DE",
-      "dispo": false,
-      "etat": "neuf",
+      "id": "a07542-ba7d-3c5b-5075-75ac4f046fa6",
+      "marque": "Citroën",
+      "modele": "SUV",
       "type": "Voiture",
-      "prixLoca": "552"
+      "imma": "CC-333-CC",
+      "etat": "C",
+      "prix": "150",
+      "dispo": true
+    },
+    {
+      "id": "b5250fa-e3ab-f11e-8d8c-3a74b531ef",
+      "marque": "test",
+      "modele": "test",
+      "type": "Voiture",
+      "imma": "CC-333-33",
+      "etat": "A",
+      "prix": "300",
+      "dispo": true
+    },
+    {
+      "id": "5a4d8aa-8ada-6fcd-57b8-1a068d04ad11",
+      "marque": "Peugeo",
+      "modele": "Citadine",
+      "type": "Voiture",
+      "imma": "AA-111-AA",
+      "etat": "A",
+      "prix": "100",
+      "dispo": false
+    }
+  ],
+  "locations": [
+    {
+      "id": "ddf7a82-62b0-fe36-3b82-da2cbd24d6e6",
+      "idClient": "61cd86-ddc1-b313-07a5-63fd38a724f8",
+      "idVehicule": "5a4d8aa-8ada-6fcd-57b8-1a068d04ad11",
+      "imma": "AA-111-AA",
+      "dateDebut": "2022-10-20",
+      "dateFin": "2022-10-27",
+      "prixLoca": "700"
     }
   ]
 }

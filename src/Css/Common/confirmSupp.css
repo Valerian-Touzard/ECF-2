@@ -1,0 +1,28 @@
+.box-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.choix{
+    display: flex;
+    justify-content: space-between;
+    width: 25%;
+}
+
+.choix button{
+    font-size: 40px;
+    border: none;
+    border-radius: 10%;
+    width: 40%;
+    cursor: pointer;
+}
+
+.supp{
+    background-color: #f44336;
+}
+
+.cancel{
+    background-color: #008CBA;
+}
