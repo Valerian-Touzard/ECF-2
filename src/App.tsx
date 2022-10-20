@@ -1,32 +1,42 @@
 import React from 'react';
-import { BrowserRouter as Routeur, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Routeur, Link, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { FormulaireAjoutLocataire } from './Components/Ajout/FormulaireAjoutLocataire';
+import { FormulaireAjoutVehicule } from './Components/Ajout/FormulaireAjoutVehicule';
+import { FormulaireModificationVehicule } from './Components/Modif/FormulaireModificationVehicule';
+import './Css/Navbar/navbar.css';
+import image from "./Img/localib.png";
 import { ListLocataires } from './Pages/ListLocataires';
-import { ListVehicule } from './Pages/ListVehicule';
+import { ListVehicules } from './Pages/ListVehicules';
 import { Page404 } from './Pages/Page404';
-import image  from './img/localib.png'
-import { AddLocataire } from './Components/AddLocataire';
 
 function App() {
   return (
     <>
       <Routeur>
         <nav>
-          <img src={image} alt="localib" className='image'/>
+          <img src={image} alt="" />
           <ul>
             <li>
-                <Link to='/'> Home</Link>
+              <Link to="/">Locataire</Link>
             </li>
             <li>
-              <Link to='/vehicules'>Vehicule</Link>
+              <Link to="/vehicule">Véhicule</Link>
+            </li>
+            <li>
+              <Link to="/location">Location</Link>
             </li>
           </ul>
         </nav>
         <Routes>
           <Route path='*' element={<Page404 />} />
           <Route path="/" element={<ListLocataires />} />
-          <Route path="/vehicules" element={<ListVehicule />} />
-          <Route path="/addLocataire" element={<AddLocataire addLocataire={undefined} />} />
+          <Route path="/vehicule" element={<ListVehicules />} />
+
+          <Route path="/ajoutLocataire" element={<FormulaireAjoutLocataire />} />
+          <Route path="/ajoutVehicule" element={<FormulaireAjoutVehicule />} />
+
+          <Route path="/modifVehicule/:id" element={<FormulaireModificationVehicule />} />
         </Routes>
       </Routeur>
     </>
