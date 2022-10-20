@@ -27,16 +27,6 @@
   ],
   "vehicules": [
     {
-      "id": "c145b84-445-302b-db6d-ff4a5e062ce",
-      "marque": "Peugeo",
-      "modele": "Citadine",
-      "type": "Voiture",
-      "imma": "AA-111-AA",
-      "etat": "A",
-      "prix": "100",
-      "dispo": true
-    },
-    {
       "id": "ad831f-236b-bb8f-c3d1-6e58c27687",
       "marque": "Reunault",
       "modele": "Famillale",
@@ -44,7 +34,7 @@
       "imma": "BB-22-BB",
       "etat": "B",
       "prix": "50",
-      "dispo": false
+      "dispo": true
     },
     {
       "id": "a07542-ba7d-3c5b-5075-75ac4f046fa6",
@@ -54,17 +44,28 @@
       "imma": "CC-333-CC",
       "etat": "C",
       "prix": "150",
-      "dispo": false
+      "dispo": true
+    },
+    {
+      "id": "b5250fa-e3ab-f11e-8d8c-3a74b531ef",
+      "marque": "test",
+      "modele": "test",
+      "type": "Voiture",
+      "imma": "CC-333-33",
+      "etat": "A",
+      "prix": "300",
+      "dispo": true
+    },
+    {
+      "id": "5a4d8aa-8ada-6fcd-57b8-1a068d04ad11",
+      "marque": "Peugeo",
+      "modele": "Citadine",
+      "type": "Voiture",
+      "imma": "AA-111-AA",
+      "etat": "A",
+      "prix": "100",
+      "dispo": true
     }
   ],
-  "locations": [
-    {
-      "id": "458471-dc4b-426-daae-3b7aff7f56db",
-      "nomClient": "PasLaRef Michelle",
-      "imma": "BB-22-BB",
-      "dateDebut": "2022-10-20",
-      "dateFin": "2022-10-23",
-      "prixLoca": "150"
-    }
-  ]
+  "locations": []
 }

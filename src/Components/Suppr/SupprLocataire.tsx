@@ -5,7 +5,6 @@ import "../../Css/Common/confirmSupp.css"
 
 export const SupprLocataire = () => {
     const { id } = useParams();
-
     let navigate = useNavigate();
 
     /**

@@ -16,7 +16,7 @@ export const FormulaireAjoutLocataire = () => {
         dateNaiss: "",
     });
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
 
 
     /**
@@ -28,7 +28,7 @@ export const FormulaireAjoutLocataire = () => {
     }
 
     /**
-     * Envoie le state du nouveau locataire a l'api pour enregistrement
+     * Appelle API pour enregistrer le nouveaux locataire
      * @param event React.MouseEvent<HTMLButtonElement>
      */
     const addNewLocataire = (event: React.MouseEvent<HTMLButtonElement>) => {

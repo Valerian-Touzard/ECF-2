@@ -14,6 +14,7 @@ import { SupprVehicule } from './Components/Suppr/SupprVehicule';
 import { Page404 } from './Pages/Page404';
 import './Css/Navbar/navbar.css';
 import image from "./img/localib.png";
+import { SupprLocation } from './Components/Suppr/SupprLocation';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
 
           <Route path="/confirmSuprrLocataire/:id" element={<SupprLocataire />} />
           <Route path="/confirmSuprrVehicule/:id" element={<SupprVehicule />} />
+          <Route path="/confirmSuprrLocation/:id/:idVehicule" element={<SupprLocation />} />
         </Routes>
       </Routeur>
     </>

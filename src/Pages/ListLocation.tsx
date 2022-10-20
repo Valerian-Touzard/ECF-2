@@ -7,13 +7,10 @@ export const ListLocation = () => {
 
     const [listLocations, setListLocations] = useState<LocationType[]>([])
 
-
     useEffect(() => {
       getAllLocations()
     }, [])
     
-
-
     /**
      * Permet de récupérer les locations de la base de données
      */

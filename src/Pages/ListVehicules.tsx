@@ -9,7 +9,6 @@ export const ListVehicules = () => {
 
     const [listVehicules, setListVehicules] = useState<VehiculeType[]>([]);
 
-
     useEffect(() => {
         getAllVehicules();
     }, [])

@@ -14,7 +14,8 @@ export const FormulaireAjoutLocation = () => {
     const [listLocataires, setListLocataires] = useState<LocataireType[]>();
     const [newLocation, setNewLocation] = useState<LocationType>({
         id: uuid(),
-        nomClient: "",
+        idClient: "",
+        idVehicule: "",
         imma: "",
         dateDebut: "",
         dateFin: "",
@@ -23,8 +24,6 @@ export const FormulaireAjoutLocation = () => {
     });
 
     const navigate = useNavigate();
-
-
 
     useEffect(() => {
         vehiculeService.getOneVehiculeById(id as string).then(data => setVehiculeLouer(data));
@@ -43,8 +42,8 @@ export const FormulaireAjoutLocation = () => {
     }
 
     /**
-     * Change la valeur de l'attribut correspondant avec la valeur de l'input et appelle la fonction calcule prix location
-     * @param event 
+     * Change la valeur de l'attribut correspondant avec la valeur de l'input et appelle la fonction calculePrixLocation()
+     * @param event ChangeEvent<HTMLInputElement>
      */
     const handleChangeDateFin = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
@@ -58,7 +57,8 @@ export const FormulaireAjoutLocation = () => {
         // On définit un objet LocationType qui prends la valeurs des attibuts du state
         let newLoca: LocationType = {
             id: newLocation.id,
-            nomClient: newLocation.nomClient,
+            idClient: newLocation.idClient,
+            idVehicule: newLocation.idVehicule,
             imma: newLocation.imma,
             dateDebut: newLocation.dateDebut,
             dateFin: dateFin,
@@ -87,19 +87,25 @@ export const FormulaireAjoutLocation = () => {
 
     /**
      * Permet d'ajouter une location dans la db
-     * @param event 
+     * @param event React.MouseEvent<HTMLButtonElement>
      */
     const addNewLocation = (event: React.MouseEvent<HTMLButtonElement>) => {
-        event.preventDefault();
+        event.preventDefault(); // on empêche le comportement par défaut du bouton
+
+        // On crée un objet véhicule et locataire 
         let vehicule: VehiculeType = vehiculeLouer as VehiculeType;
-        vehicule.dispo = false;
+        vehicule.dispo = false; // On change la disponibilité du véhicule
         let location: LocationType = newLocation;
-        location.imma = vehicule.imma;
-        setNewLocation(location);
-        setVehiculeLouer(vehicule);
-        vehiculeService.modifVehicule(vehicule, vehicule.id);
-        locationService.addNewLocation(newLocation);
-        navigate("/location")
+        location.imma = vehicule.imma; // On enregistre l'immatriculation du véhicule
+        location.idVehicule = vehiculeLouer?.id as string;
+        location.idClient = newLocation.idClient as string;
+
+        setNewLocation(location); // On change le state du véhicule
+        setVehiculeLouer(vehicule); // On change le state de la location
+
+        vehiculeService.modifVehicule(vehicule, vehicule.id); // On enregistre les modification du véhicule dans la db
+        locationService.addNewLocation(newLocation); // On enregistre la nouvelle location dans la base
+        navigate("/location") // on retourne sur la page d'affichage de toutes les locations
     }
 
     return (
@@ -125,10 +131,10 @@ export const FormulaireAjoutLocation = () => {
 
                 <div className="champ">
                     <label htmlFor="client">Le client:</label>
-                    <select name='nomClient' onChange={handleChange}>
+                    <select name='idClient' onChange={handleChange}>
                         <option value=""></option>
                         {listLocataires && listLocataires.map((locataire) => {
-                            return <option value={locataire.nom + " " + locataire.prenom} key={locataire.id}>{locataire.nom + " " + locataire.prenom}</option>
+                            return <option value={locataire.id} key={locataire.id}>{locataire.nom + " " + locataire.prenom}</option>
                         })}
                     </select>
                 </div>

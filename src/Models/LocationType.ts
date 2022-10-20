@@ -1,6 +1,7 @@
 export interface LocationType{
     id: string,
-    nomClient: string,
+    idClient: string,
+    idVehicule: string,
     imma: string,
     dateDebut: string,
     dateFin: string,

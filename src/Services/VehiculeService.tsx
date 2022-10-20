@@ -16,11 +16,11 @@ class VehiculeService {
 
     /**
      * Méthode qui retourne un véhicule via son id
-     * @param id string
+     * @param idVehicule string
      * @returns json
      */
-    getOneVehiculeById(id: string) {
-        return fetch(URI + "/" + id).then(response => response.json()).catch(err => console.log(err));
+    getOneVehiculeById(idVehicule: string) {
+        return fetch(URI + "/" + idVehicule).then(response => response.json()).catch(err => console.log(err));
     }
 
 
@@ -41,7 +41,7 @@ class VehiculeService {
 
 
     /**
-     * Méthode qui ajoute un véhicule dans la bdd
+     * Méthode qui modifie un véhicule dans la bdd
      * @param vehicule VehiculeType
      * @param idVehicule string
      * @returns json
@@ -58,11 +58,11 @@ class VehiculeService {
 
     /**
      * Méthode qui supprime un vehicule via son id
-     * @param id string
+     * @param idVehicule string
      * @returns 
      */
-    deleteVehicule(id: string) {
-        return fetch(URI + "/" + id, {
+    deleteVehicule(idVehicule: string) {
+        return fetch(URI + "/" + idVehicule, {
             method: "DELETE",
         }).then(response => response.json()).catch(err => console.log(err));
     }

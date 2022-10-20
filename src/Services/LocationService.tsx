@@ -15,11 +15,11 @@ class LocationService{
 
     /**
      * Méthode qui retourne une Location via son id
-     * @param id string
+     * @param idLocation string
      * @returns json
      */
-    getOneLocationById(id: string) {
-        return fetch(URI + "/" + id).then(response => response.json()).catch(err => console.log(err));
+    getOneLocationById(idLocation: string) {
+        return fetch(URI + "/" + idLocation).then(response => response.json()).catch(err => console.log(err));
     }
 
 
@@ -40,13 +40,13 @@ class LocationService{
 
 
     /**
-     * Méthode qui ajoute une location dans la bdd
+     * Méthode qui modifie une location dans la bdd
      * @param location LocationType
-     * @param id string
+     * @param idLocation string
      * @returns json
      */
-    modifLocation(location: LocationType, id: string) {
-        return fetch(URI + "/" + id, {
+    modifLocation(location: LocationType, idLocation: string) {
+        return fetch(URI + "/" + idLocation, {
             method: "PUT",
             body: JSON.stringify(location),
             headers: {
@@ -57,11 +57,11 @@ class LocationService{
 
     /**
      * Méthode qui supprime une location via son id
-     * @param id string
+     * @param idLocation string
      * @returns 
      */
-    deleteLocation(id: string) {
-        return fetch(URI + "/" + id, {
+    deleteLocation(idLocation: string) {
+        return fetch(URI + "/" + idLocation, {
             method: "DELETE",
         }).then(response => response.json()).catch(err => console.log(err));
     }
