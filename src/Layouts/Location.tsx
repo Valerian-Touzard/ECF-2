@@ -30,7 +30,7 @@ export const Location = (props: propsType) => {
             <td>{props.location.dateFin}</td>
             <td>{props.location.prixLoca}</td>
             <td>
-                <Link to={`/modifLocation/${props.location.id}`} className="modifier">Modifier</Link>
+                <Link to={`/modifLocation/${props.location.id}/${props.location.idClient}/${props.location.idVehicule}`} className="modifier">Modifier</Link>
                 <Link to={`/confirmSuprrLocation/${props.location.id}/${props.location.idVehicule}`} className="supprimer">Supprimer</Link>
             </td>
         </>
