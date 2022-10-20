@@ -14,6 +14,15 @@ class LocataireService {
     }
 
     /**
+     * Méthode qui retourne un locataire via son id
+     * @param id string
+     * @returns json
+     */
+    getOneLocataireById(id: string) {
+        return fetch(URI + "/" + id).then(response => response.json()).catch(err => console.log(err));
+    }
+
+    /**
      * Ajoute 1 locataire
      * @param unLocataire : locataire
      * @returns JSON
@@ -36,7 +45,7 @@ class LocataireService {
      * @returns JSOn
      */
     modifyLocataire(id: string, unLocataire: any) {
-        return fetch(URI+`/${id}`,{
+        return fetch(URI + `/${id}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -50,8 +59,8 @@ class LocataireService {
      * @param id : string
      * @returns JSON
      */
-    async deleteLocataire(id: string){
-        return await fetch (URI+`/${id}`, {
+    async deleteLocataire(id: string) {
+        return await fetch(URI + `/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"

@@ -57,7 +57,7 @@ export const FormulaireModificationVehicule = () => {
     const modifVehicule = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         vehiculeService.modifVehicule(vehiculeAModiff, vehiculeAModiff.id);
-        navigate("/");
+        navigate("/vehicule");
     }
 
     return (
