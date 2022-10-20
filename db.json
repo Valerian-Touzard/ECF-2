@@ -27,24 +27,34 @@
   ],
   "vehicules": [
     {
-      "idVehicule": "4e32502-13a7-afe1-a50a-b2df47b0007",
-      "marque": "citroen",
-      "modele": "sport",
-      "imma": "AA-889-FR",
-      "dispo": true,
-      "etat": "Bon",
+      "id": "c145b84-445-302b-db6d-ff4a5e062ce",
+      "marque": "Peugeo",
+      "modele": "Citqdine",
       "type": "Voiture",
-      "prixLoca": "53"
+      "imma": "AA-111-AA",
+      "etat": "A",
+      "prix": "100",
+      "dispo": true
     },
     {
-      "idVehicule": "fds54f4sd-13a7-afe1-a50a-b2df47b0007",
-      "marque": "renault",
-      "modele": "sport",
-      "imma": "AA-853-DE",
-      "dispo": false,
-      "etat": "neuf",
+      "id": "ad831f-236b-bb8f-c3d1-6e58c27687",
+      "marque": "Reunault",
+      "modele": "Famillale",
       "type": "Voiture",
-      "prixLoca": "552"
+      "imma": "BB-22-BB",
+      "etat": "B",
+      "prix": "50",
+      "dispo": true
+    },
+    {
+      "id": "a07542-ba7d-3c5b-5075-75ac4f046fa6",
+      "marque": "Citroën",
+      "modele": "SUV",
+      "type": "Voiture",
+      "imma": "CC-333-CC",
+      "etat": "C",
+      "prix": "150",
+      "dispo": false
     }
   ]
 }
