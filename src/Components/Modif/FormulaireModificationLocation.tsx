@@ -104,7 +104,7 @@ export const FormulaireModificationLocation = () => {
             <form className='formulaire'>
                 <div className="champ">
                     <label htmlFor="dateFin">Date de fin</label>
-                    <input type="date" name='dateFin' value={locationAModiff?.dateFin} onChange={handleChange} />
+                    <input type="date" name='dateFin' value={locationAModiff?.dateFin} onChange={handleChange} min={new Date().toISOString().slice(0, -14)}/>
                 </div>
                 <div className="champ">
                     <p>nouveau Prix: {locationAModiff.prixLoca}</p>

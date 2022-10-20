@@ -10,6 +10,7 @@ import { vehiculeService } from '../../Services/VehiculeService';
 
 export const FormulaireAjoutLocation = () => {
     const { id } = useParams();
+    const [isValid, setisValid] = useState<boolean>();
     const [vehiculeLouer, setVehiculeLouer] = useState<VehiculeType>();
     const [listLocataires, setListLocataires] = useState<LocataireType[]>();
     const [newLocation, setNewLocation] = useState<LocationType>({
@@ -47,7 +48,12 @@ export const FormulaireAjoutLocation = () => {
      */
     const handleChangeDateFin = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
-        calculePrix(event.target.value)
+        calculePrix(event.target.value);
+        if (verifDate()) {
+            setisValid(false);
+        } else {
+            setisValid(true);
+        }
     }
 
     /**
@@ -83,6 +89,20 @@ export const FormulaireAjoutLocation = () => {
 
         // On enregistre la valeurs
         setNewLocation(newLoca)
+
+    }
+
+
+    /**
+     * Permet de vérifier si les dates rentré son correctement par l'utilisateur
+     * @returns 
+     */
+    const verifDate = (): boolean => {
+        let isValid: boolean = true;
+        if (parseInt(newLocation.prixLoca) < 0) {
+            isValid = false;
+        }
+        return isValid;
     }
 
     /**
@@ -144,13 +164,15 @@ export const FormulaireAjoutLocation = () => {
                 </div>
                 <div className="champ">
                     <label htmlFor="dateFin">Date de fin</label>
-                    <input type="date" name="dateFin" onChange={handleChangeDateFin} />
+                    <input type="date" name="dateFin" onChange={handleChangeDateFin} min={new Date().toISOString().slice(0, -14)} />
                 </div>
+                {isValid === false ? <p>Attention, la date de fin doit être antérieur à la date de début !</p> : ""}
                 <div className="champ">
                     <p>Estimation prix: {newLocation.prixLoca}€</p>
                 </div>
 
-                <button type="submit" className="bouton" onClick={addNewLocation}>Enregistrer location</button>
+                {isValid === true ?  <button type="submit" className="bouton" onClick={addNewLocation}>Enregistrer location</button> : ""}
+
             </form>
         </>
     )

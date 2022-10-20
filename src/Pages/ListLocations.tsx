@@ -3,7 +3,7 @@ import { Location } from '../Layouts/Location'
 import { LocationType } from '../Models/LocationType'
 import { locationService } from '../Services/LocationService'
 
-export const ListLocation = () => {
+export const ListLocations = () => {
 
     const [listLocations, setListLocations] = useState<LocationType[]>([])
 
