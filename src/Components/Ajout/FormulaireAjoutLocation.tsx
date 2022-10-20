@@ -7,6 +7,7 @@ import { VehiculeType } from '../../Models/VehiculeType';
 import { locataireService } from '../../Services/LocataireService';
 import { locationService } from '../../Services/LocationService';
 import { vehiculeService } from '../../Services/VehiculeService';
+import "../../Css/Common/formulaire.css";
 
 export const FormulaireAjoutLocation = () => {
     const { id } = useParams();
@@ -95,7 +96,7 @@ export const FormulaireAjoutLocation = () => {
 
     /**
      * Permet de vérifier si les dates rentré son correctement par l'utilisateur
-     * @returns 
+     * @returns boolean
      */
     const verifDate = (): boolean => {
         let isValid: boolean = true;
@@ -104,6 +105,7 @@ export const FormulaireAjoutLocation = () => {
         }
         return isValid;
     }
+
 
     /**
      * Permet d'ajouter une location dans la db
@@ -166,7 +168,7 @@ export const FormulaireAjoutLocation = () => {
                     <label htmlFor="dateFin">Date de fin</label>
                     <input type="date" name="dateFin" onChange={handleChangeDateFin} min={new Date().toISOString().slice(0, -14)} />
                 </div>
-                {isValid === false ? <p>Attention, la date de fin doit être antérieur à la date de début !</p> : ""}
+                {isValid === false ? <p className='warning'>Attention, la date de fin doit être supérieur à la date de début !</p> : ""}
                 <div className="champ">
                     <p>Estimation prix: {newLocation.prixLoca}€</p>
                 </div>
