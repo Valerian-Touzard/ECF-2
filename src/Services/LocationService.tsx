@@ -1,13 +1,13 @@
 import { LocationType } from "../Models/LocationType";
 
-const URI = "http://localhost:3001/locations";
+const URI = "http://localhost:8080/locations";
 
-class LocationService{
-     /**
-     * Méthode qui retourne la liste de toutes les locations
-     * @returns JSON
-     */
-      getAllLocations() {
+class LocationService {
+    /**
+    * Méthode qui retourne la liste de toutes les locations
+    * @returns JSON
+    */
+    getAllLocations() {
         return fetch(URI)
             .then(response => response.json())
             .catch(err => console.log(err));
@@ -28,14 +28,17 @@ class LocationService{
      * @param location LocationType
      * @returns json
      */
-    addNewLocation(location: LocationType) {
-        return fetch(URI, {
+    addNewLocation(location: LocationType, idVehicule: string) {            
+        return fetch(`${URI}/vehicules/${idVehicule}`, {
             method: "POST",
             body: JSON.stringify(location),
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             }
-        }).then(response => response.json()).catch(err => console.log(err));
+            
+        })
+        .then(response => response.json())
+        .catch(err => console.log(err));
     }
 
 

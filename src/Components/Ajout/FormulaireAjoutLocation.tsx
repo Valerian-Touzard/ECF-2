@@ -16,7 +16,14 @@ export const FormulaireAjoutLocation = () => {
     const [listLocataires, setListLocataires] = useState<LocataireType[]>();
     const [newLocation, setNewLocation] = useState<LocationType>({
         id: uuid(),
-        idClient: "",
+        locataire:{
+            id: "",
+            nom: "",
+            prenom: "",
+            email: "",
+            tel: "",
+            dateNaiss: "",
+        },
         idVehicule: "",
         imma: "",
         dateDebut: "",
@@ -50,11 +57,6 @@ export const FormulaireAjoutLocation = () => {
     const handleChangeDateFin = (event: ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         calculePrix(event.target.value);
-        if (verifDate()) {
-            setisValid(false);
-        } else {
-            setisValid(true);
-        }
     }
 
     /**
@@ -64,7 +66,7 @@ export const FormulaireAjoutLocation = () => {
         // On définit un objet LocationType qui prends la valeurs des attibuts du state
         let newLoca: LocationType = {
             id: newLocation.id,
-            idClient: newLocation.idClient,
+            locataire: newLocation.locataire,
             idVehicule: newLocation.idVehicule,
             imma: newLocation.imma,
             dateDebut: newLocation.dateDebut,
@@ -76,36 +78,28 @@ export const FormulaireAjoutLocation = () => {
         let dateDebutLoca = new Date(newLocation.dateDebut);
         let dateFinLoca = new Date(dateFin);
 
-        // récupère le temps en milliseconde qui sépare les deux dates
-        let tmp = dateFinLoca.getTime() - dateDebutLoca.getTime();
+        if (dateDebutLoca < dateFinLoca) {
+            setisValid(true)
+            // récupère le temps en milliseconde qui sépare les deux dates
+            let tmp = dateFinLoca.getTime() - dateDebutLoca.getTime();
 
-        // Permet de récupèrer le nombre de jours entre les deux dates
-        tmp = Math.floor((((tmp / 1000) / 60) / 60) / 24);
+            // Permet de récupèrer le nombre de jours entre les deux dates
+            tmp = Math.floor((((tmp / 1000) / 60) / 60) / 24);
 
-        // On calcule le prix totale de la location en prenant en compte le prix de location de 1 jours de la voiture
-        let prixTotale: number = tmp * parseInt(vehiculeLouer?.prix as string);
+            // On calcule le prix totale de la location en prenant en compte le prix de location de 1 jours de la voiture
+            let prixTotale: number = tmp * parseInt(vehiculeLouer?.prix as string);
 
-        // On convertie la variable en string 
-        newLoca.prixLoca = prixTotale.toString();
+            // On convertie la variable en string 
+            newLoca.prixLoca = prixTotale.toString();
 
-        // On enregistre la valeurs
-        setNewLocation(newLoca)
-
-    }
-
-
-    /**
-     * Permet de vérifier si les dates rentré son correctement par l'utilisateur
-     * @returns boolean
-     */
-    const verifDate = (): boolean => {
-        let isValid: boolean = true;
-        if (parseInt(newLocation.prixLoca) < 0) {
-            isValid = false;
+            // On enregistre la valeurs
+            setNewLocation(newLoca)
+        }else{
+            setisValid(false);
         }
-        return isValid;
-    }
 
+
+    }
 
     /**
      * Permet d'ajouter une location dans la db
@@ -119,14 +113,15 @@ export const FormulaireAjoutLocation = () => {
         vehicule.dispo = false; // On change la disponibilité du véhicule
         let location: LocationType = newLocation;
         location.imma = vehicule.imma; // On enregistre l'immatriculation du véhicule
-        location.idVehicule = vehiculeLouer?.id as string;
-        location.idClient = newLocation.idClient as string;
+        location.idVehicule = vehicule?.id as string;
+        // location.locataire.id = newLocation.locataire.id as string;
 
         setNewLocation(location); // On change le state du véhicule
         setVehiculeLouer(vehicule); // On change le state de la location
 
-        vehiculeService.modifVehicule(vehicule, vehicule.id); // On enregistre les modification du véhicule dans la db
-        locationService.addNewLocation(newLocation); // On enregistre la nouvelle location dans la base
+        // vehiculeService.modifVehicule(vehicule, vehicule.id); // On enregistre les modification du véhicule dans la db
+        locationService.addNewLocation(newLocation, vehicule.id); // On enregistre la nouvelle location dans la base
+        locationService.getAllLocations();
         navigate("/location") // on retourne sur la page d'affichage de toutes les locations
     }
 
@@ -152,8 +147,8 @@ export const FormulaireAjoutLocation = () => {
 
 
                 <div className="champ">
-                    <label htmlFor="client">Le client:</label>
-                    <select name='idClient' onChange={handleChange}>
+                    <label htmlFor="locataire">Le client:</label>
+                    <select name='locataire' onChange={handleChange}>
                         <option value=""></option>
                         {listLocataires && listLocataires.map((locataire) => {
                             return <option value={locataire.id} key={locataire.id}>{locataire.nom + " " + locataire.prenom}</option>
@@ -173,7 +168,7 @@ export const FormulaireAjoutLocation = () => {
                     <p>Estimation prix: {newLocation.prixLoca}€</p>
                 </div>
 
-                {isValid === true ?  <button type="submit" className="bouton" onClick={addNewLocation}>Enregistrer location</button> : ""}
+                {isValid === true ? <button type="submit" className="bouton" onClick={addNewLocation}>Enregistrer location</button> : ""}
 
             </form>
         </>

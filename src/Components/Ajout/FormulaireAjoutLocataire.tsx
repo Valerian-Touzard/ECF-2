@@ -34,6 +34,7 @@ export const FormulaireAjoutLocataire = () => {
     const addNewLocataire = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         locataireService.addLocataire(newLocataire);
+        locataireService.getAllLocataires();
         navigate("/");
     }
 

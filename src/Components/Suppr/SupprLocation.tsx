@@ -12,7 +12,14 @@ export const SupprLocation = () => {
     const { idVehicule } = useParams();
     const [location, setLocation] = useState<LocationType>({
         id: id as string,
-        idClient: "",
+        locataire:{
+            id: "",
+            nom: "",
+            prenom: "",
+            email: "",
+            tel: "",
+            dateNaiss: "",
+        },
         idVehicule: "",
         imma: "",
         dateDebut: "",

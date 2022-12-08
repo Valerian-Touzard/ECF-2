@@ -15,7 +15,14 @@ export const FormulaireModificationLocation = () => {
 
     const [locationAModiff, setLocationAModiff] = useState<LocationType>({
         id: "",
-        idClient: "",
+        locataire:{
+            id: "",
+            nom: "",
+            prenom: "",
+            email: "",
+            tel: "",
+            dateNaiss: "",
+        },
         idVehicule: "",
         imma: "",
         dateDebut: "",
@@ -57,7 +64,7 @@ export const FormulaireModificationLocation = () => {
         // On définit un objet LocationType qui prends la valeurs des attibuts du state
         let locaAModiff: LocationType = {
             id: locationAModiff.id,
-            idClient: locationAModiff.idClient,
+            locataire: locationAModiff.locataire,
             idVehicule: locationAModiff.idVehicule,
             imma: locationAModiff.imma,
             dateDebut: locationAModiff.dateDebut,
