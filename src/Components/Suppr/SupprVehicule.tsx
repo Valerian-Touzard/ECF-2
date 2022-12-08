@@ -15,6 +15,7 @@ export const SupprVehicule = () => {
     const deleteVehicule = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         vehiculeService.deleteVehicule(id as string);
+        vehiculeService.getAllVehicules();
         navigate("/vehicule")
     }
 

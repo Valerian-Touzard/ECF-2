@@ -1,6 +1,6 @@
 import { VehiculeType } from "../Models/VehiculeType";
 
-const URI = "http://localhost:3001/vehicules";
+const URI = "http://localhost:8080/vehicules";
 
 class VehiculeService {
 

@@ -14,6 +14,7 @@ export const SupprLocataire = () => {
     const deleteLocataire = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         locataireService.deleteLocataire(id as string);
+        locataireService.getAllLocataires();
         navigate("/")
     }
 

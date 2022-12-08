@@ -43,6 +43,7 @@ export const FormulaireAjoutVehicule = () => {
     const addNewVehicule = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         vehiculeService.addNewVehicule(newVehicule);
+        vehiculeService.getAllVehicules();
         navigate("/vehicule");
     }
 

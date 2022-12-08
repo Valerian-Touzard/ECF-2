@@ -1,6 +1,7 @@
+import { LocataireType } from './LocataireType';
 export interface LocationType{
     id: string,
-    idClient: string,
+    locataire: LocataireType,
     idVehicule: string,
     imma: string,
     dateDebut: string,

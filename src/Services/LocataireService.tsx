@@ -1,4 +1,4 @@
-const URI = "http://localhost:3001/locataires";
+const URI = "http://localhost:8080/locataires";
 
 
 class LocataireService {
